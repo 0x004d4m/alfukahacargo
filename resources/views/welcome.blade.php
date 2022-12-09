@@ -1,0 +1,13 @@
+@extends('website.layout.main')
+@section('title', 'Home')
+@section('content')
+    @include('website.partials.carousel')
+    @include('website.partials.about')
+    @include('website.partials.fact')
+    @include('website.partials.service')
+    @include('website.partials.feature')
+    @include('website.partials.pricing')
+    @include('website.partials.quote')
+    @include('website.partials.team')
+    @include('website.partials.testimonial')
+@endsection

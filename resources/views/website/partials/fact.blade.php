@@ -2,7 +2,7 @@
 <div class="container-xxl py-5" id="facts">
     <div class="container py-5">
         <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase mb-3">{{__('content.alfukahacargo')}}</h6>
                 {{-- <h1 class="mb-5">#1 Place To Manage All Of Your Shipments</h1> --}}
                 <p class="mb-5">{!!nl2br(__('content.fact1'))!!}</p>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            {{-- <div class="col-lg-6">
                 <div class="row g-4 align-items-center">
                     <div class="col-sm-6">
                         <div class="bg-primary p-4 mb-4 wow fadeIn" data-wow-delay="0.3s">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

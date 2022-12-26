@@ -13,96 +13,95 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            // General information
-            // branch
-            // order date
-            // received date
-            // status
-            // shipping line
-            // booking number
-            // container number
-            // Tracking url
-            // Final port
-            // Final country
-            // Final city
-            // Consigned To
-            // Sale origin
-            // Seller
-            // Auction
-            // Location
-            // Buyer code
-            // Lot no
+        // Schema::create('orders', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
 
-            // Vehicle information
-            // VIN Number
-            // Year
-            // Make
-            // Model
-            // Type
-            // Order parts
-            // Order parts note
-            // Vehicle for cutting
-            // department
-            // Note
+        //     General information
+        //     branch
+        //     order date
+        //     received date
+        //     status
+        //     shipping line
+        //     booking number
+        //     container number
+        //     Tracking url
+        //     Final port
+        //     Final country
+        //     Final city
+        //     Consigned To
+        //     Sale origin
+        //     Seller
+        //     Auction
+        //     Location
+        //     Buyer code
+        //     Lot no
 
-            // Inspection
-            // Color
-            // Damage
-            // New/Used
-            // Keys
-            // Running
-            // Wheels
-            // AirBag
-            // Radio
+        //     Vehicle information
+        //     VIN Number
+        //     Year
+        //     Make
+        //     Model
+        //     Type
+        //     Order parts
+        //     Order parts note
+        //     Vehicle for cutting
+        //     department
+        //     Note
 
-            // Services
-            // Date
-            // Billed by
-            // Customer
-            // Service
-            // Quantity
-            // Amount
-            // Invoice (PDF)
+        //     Inspection
+        //     Color
+        //     Damage
+        //     New/Used
+        //     Keys
+        //     Running
+        //     Wheels
+        //     AirBag
+        //     Radio
 
-            // Documents
-            // Title
-            // Title Location
-            // State
-            // Title Type
-            // Title No
-            // Title received date
-            // Bill Of Sale
-            // Attachment list (Type Name Document)
-            // Exporter
-            // Consignee => company_id
+        //     Services
+        //     Date
+        //     Billed by
+        //     Customer
+        //     Service
+        //     Quantity
+        //     Amount
+        //     Invoice (PDF)
 
-            // Notes
-            // Date
-            // Note
+        //     Documents
+        //     Title
+        //     Title Location
+        //     State
+        //     Title Type
+        //     Title No
+        //     Title received date
+        //     Bill Of Sale
+        //     Attachment list (Type Name Document)
+        //     Exporter
+        //     Consignee => company_id
 
-            // Order Parts
-            // note
-            // Ship parts with vehicle
-            // Order parts to branch
+        //     Notes
+        //     Date
+        //     Note
 
-            // Loading details
-            // container info
+        //     Order Parts
+        //     note
+        //     Ship parts with vehicle
+        //     Order parts to branch
 
-            // Add on services
+        //     Loading details
+        //     container info
 
-            // Insurance
-            // Vehicle value
-            // Total Loss (Stranding Cover + Theft)
-            // Full Cover
+        //     Add on services
 
-            // Images
-            // Type (Received images, Pick Up Images, Auction images, Add On Service Image)
- 
+        //     Insurance
+        //     Vehicle value
+        //     Total Loss (Stranding Cover + Theft)
+        //     Full Cover
 
-            $table->timestamps();
-        });
+        //     Images
+        //     Type (Received images, Pick Up Images, Auction images, Add On Service Image)
     }
 
     /**

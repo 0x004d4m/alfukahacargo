@@ -16,10 +16,16 @@
     }
 
     if(!empty($column['value'])) {
-        $column['text'] = $column['prefix'].Str::limit($column['value'], $column['limit'], '…').$column['suffix'];
+        $column['text'] = $column['value'];
     }
 @endphp
 
-<a href="{{ $column['text'] }}" target="_blank">
-    View
-</a>
+@if ($column['text']=='-')
+    <span>-</span>
+@else
+
+    <a href="{{ $column['text'] }}" target="_blank">
+        View
+    </a>
+@endif
+

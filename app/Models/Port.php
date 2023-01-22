@@ -3,37 +3,17 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Port extends Model
 {
-    use CrudTrait;
-
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use CrudTrait,SoftDeletes, HasFactory;
 
     protected $table = 'ports';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = ['name_ar','name_en','country_id','state_id','city_id'];
-    // protected $hidden = [];
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | FUNCTIONS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | RELATIONS
-    |--------------------------------------------------------------------------
-    */
 
     public function country()
     {
@@ -49,22 +29,4 @@ class Port extends Model
     {
         return $this->belongsTo(City::class);
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | ACCESSORS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
 }

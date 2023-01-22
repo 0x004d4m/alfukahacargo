@@ -3,37 +3,17 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-    use CrudTrait;
-
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use CrudTrait,SoftDeletes, HasFactory;
 
     protected $table = 'companies';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
     protected $guarded = ['id'];
     protected $fillable = ['name_ar','name_en','company_type_id','legal_status_id','country_id','state_id','city_id'];
-    // protected $hidden = [];
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | FUNCTIONS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | RELATIONS
-    |--------------------------------------------------------------------------
-    */
 
     public function companyType()
     {
@@ -59,22 +39,4 @@ class Company extends Model
     {
         return $this->belongsTo(City::class);
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | ACCESSORS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
 }

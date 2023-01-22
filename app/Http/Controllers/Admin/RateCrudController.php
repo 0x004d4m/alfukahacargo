@@ -4,13 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\RateRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class RateCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class RateCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -19,27 +13,25 @@ class RateCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     *
-     * @return void
-     */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Rate::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/rate');
-        CRUD::setEntityNameStrings('rate', 'rates');
+        if (!backpack_user()->can('Manage Rates'))
+        {
+            abort(403, 'Access denied');
+        }
+
+        if (!backpack_user()->can('Manage Rates'))
+        {
+            $this->crud->denyAccess(['create','delete','update']);
+        }
+        $this->crud->setModel(\App\Models\Rate::class);
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/rate');
+        $this->crud->setEntityNameStrings('rate', 'rates');
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     *
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
     protected function setupListOperation()
     {
-        CRUD::column('rate');
+        $this->crud->column('rate');
 
         $this->crud->addColumn([
             'label' => "Cargo Type",
@@ -76,21 +68,15 @@ class RateCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\City'
         ]);
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        $this->crud->column('created_at');
+        $this->crud->column('updated_at');
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(RateRequest::class);
+        $this->crud->setValidation(RateRequest::class);
 
-        CRUD::field('rate');
+        $this->crud->field('rate');
 
         $this->crud->addField([
             'label' => "Cargo Type",
@@ -129,14 +115,13 @@ class RateCrudController extends CrudController
         ]);
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

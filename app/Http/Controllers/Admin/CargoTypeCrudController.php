@@ -4,13 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CargoTypeRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class CargoTypeCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class CargoTypeCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -19,67 +13,46 @@ class CargoTypeCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     * 
-     * @return void
-     */
     public function setup()
     {
-        CRUD::setModel(\App\Models\CargoType::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/cargo-type');
-        CRUD::setEntityNameStrings('cargo type', 'cargo types');
+        if (!backpack_user()->can('View Cargo types'))
+        {
+            abort(403, 'Access denied');
+        }
+
+        if (!backpack_user()->can('Manage Cargo types'))
+        {
+            $this->crud->denyAccess(['create','delete','update']);
+        }
+        $this->crud->setModel(\App\Models\CargoType::class);
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/cargo-type');
+        $this->crud->setEntityNameStrings('cargo type', 'cargo types');
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     * 
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
     protected function setupListOperation()
     {
-        CRUD::column('name_ar');
-        CRUD::column('name_en');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-        CRUD::column('deleted_at');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->column('name_ar');
+        $this->crud->column('name_en');
+        $this->crud->column('created_at');
+        $this->crud->column('updated_at');
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     * 
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(CargoTypeRequest::class);
+        $this->crud->setValidation(CargoTypeRequest::class);
 
-        CRUD::field('name_ar');
-        CRUD::field('name_en');
+        $this->crud->field('name_ar');
+        $this->crud->field('name_en');
 
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     * 
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

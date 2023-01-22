@@ -4,13 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ContactRequestRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class ContactRequestCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class ContactRequestCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -19,71 +13,49 @@ class ContactRequestCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     * 
-     * @return void
-     */
     public function setup()
     {
-        CRUD::setModel(\App\Models\ContactRequest::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/contact-request');
-        CRUD::setEntityNameStrings('contact request', 'contact requests');
+        if (!backpack_user()->can('Manage Contact requests'))
+        {
+            abort(403, 'Access denied');
+        }
+
+        if (!backpack_user()->can('Manage Contact requests'))
+        {
+            $this->crud->denyAccess(['create','delete','update']);
+        }
+        $this->crud->setModel(\App\Models\ContactRequest::class);
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/contact-request');
+        $this->crud->setEntityNameStrings('contact request', 'contact requests');
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     * 
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('email');
-        CRUD::column('subject');
-        CRUD::column('message');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
-        CRUD::column('deleted_at');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->crud->column('name');
+        $this->crud->column('email');
+        $this->crud->column('subject');
+        $this->crud->column('message');
+        $this->crud->column('created_at');
+        $this->crud->column('updated_at');
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     * 
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ContactRequestRequest::class);
+        $this->crud->setValidation(ContactRequestRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('email');
-        CRUD::field('subject');
-        CRUD::field('message');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        $this->crud->field('name');
+        $this->crud->field('email');
+        $this->crud->field('subject');
+        $this->crud->field('message');
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     * 
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

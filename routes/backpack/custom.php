@@ -28,4 +28,22 @@ Route::group([
     Route::crud('cargo-type', 'CargoTypeCrudController');
     Route::crud('port', 'PortCrudController');
     Route::crud('rate', 'RateCrudController');
+    Route::crud('department', 'DepartmentCrudController');
+    Route::crud('branch', 'BranchCrudController');
+    Route::crud('loading-status', 'LoadingStatusCrudController');
+    Route::crud('container', 'ContainerCrudController');
+    Route::crud('order-status', 'OrderStatusCrudController');
+    Route::crud('image-type', 'ImageTypeCrudController');
+    Route::crud('order', 'OrderCrudController');
+    Route::crud('general', 'GeneralCrudController');
+    Route::crud('vehicle', 'VehicleCrudController');
+    Route::crud('inspection', 'InspectionCrudController');
+    Route::crud('service', 'ServiceCrudController');
+    Route::crud('document', 'DocumentCrudController');
+    Route::crud('note', 'NoteCrudController');
+    Route::crud('part', 'PartCrudController');
+    Route::crud('addon-service', 'AddonServiceCrudController');
+    Route::crud('insurance', 'InsuranceCrudController');
+    Route::crud('image', 'ImageCrudController');
+    Route::crud('order-type', 'OrderTypeCrudController');
 }); // this should be the absolute last line of this file

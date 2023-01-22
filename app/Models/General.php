@@ -26,6 +26,7 @@ class General extends Model
         'company_id',
         'consigned_to_id',
         'seller_id',
+        'sale_origin',
         'auction_id',
         'port_id',
         'country_id',

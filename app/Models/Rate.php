@@ -14,6 +14,18 @@ class Rate extends Model
     protected $table = 'rates';
     protected $guarded = ['id'];
     protected $fillable = ['rate','name_ar','name_en','cargo_type_id','country_id','state_id','city_id'];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->name_ar;
+        }else{
+            return $this->name_en;
+        }
+    }
 
     public function cargoType()
     {

@@ -14,6 +14,18 @@ class State extends Model
     protected $table = 'states';
     protected $guarded = ['id'];
     protected $fillable = ['name_ar','name_en','country_id'];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->name_ar;
+        }else{
+            return $this->name_en;
+        }
+    }
 
     public function country()
     {

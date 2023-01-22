@@ -27,4 +27,54 @@ class Order extends Model
     {
         return $this->belongsTo(OrderType::class);
     }
+
+    public function generalInformation()
+    {
+        return $this->hasOne(General::class);
+    }
+
+    public function vehicle()
+    {
+        return $this->hasOne(Vehicle::class);
+    }
+
+    public function inspections()
+    {
+        return $this->hasMany(Inspection::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function parts()
+    {
+        return $this->hasMany(Part::class);
+    }
+
+    public function addonServices()
+    {
+        return $this->hasMany(AddonService::class);
+    }
+
+    public function insurances()
+    {
+        return $this->hasMany(Insurance::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

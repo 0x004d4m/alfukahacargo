@@ -23,6 +23,18 @@ class Container extends Model
         'delivery_port_id',
         'shipping_line',
     ];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->name_ar;
+        }else{
+            return $this->name_en;
+        }
+    }
 
     public function loadingStatus()
     {

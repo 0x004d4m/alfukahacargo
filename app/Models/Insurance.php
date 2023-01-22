@@ -20,6 +20,18 @@ class Insurance extends Model
         'full_cover',
         'order_id',
     ];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->vehicle_value_ar;
+        }else{
+            return $this->vehicle_value_en;
+        }
+    }
 
     public function order()
     {

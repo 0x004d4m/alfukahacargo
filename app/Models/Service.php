@@ -24,6 +24,18 @@ class Service extends Model
         'invoice',
         'order_id',
     ];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->service_ar;
+        }else{
+            return $this->service_en;
+        }
+    }
 
     public function order()
     {

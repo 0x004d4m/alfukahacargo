@@ -56,7 +56,8 @@ class ServiceCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Company'
         ]);
-        $this->crud->column('service');
+        $this->crud->column('service_ar');
+        $this->crud->column('service_en');
         $this->crud->column('quantity');
         $this->crud->column('amount');
         $this->crud->addColumn(['name' => 'invoice','type' => 'link']);
@@ -92,7 +93,8 @@ class ServiceCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Company'
         ]);
-        $this->crud->field('service');
+        $this->crud->field('service_ar');
+        $this->crud->field('service_en');
         $this->crud->field('quantity');
         $this->crud->field('amount');
         $this->crud->addField([

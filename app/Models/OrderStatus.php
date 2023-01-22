@@ -17,4 +17,16 @@ class OrderStatus extends Model
         'name_ar',
         'name_en',
     ];
+    protected $appends = [
+        'name',
+    ];
+
+    public function getNameAttribute($value)
+    {
+        if(app()->getLocale() == 'ar'){
+            return $this->name_ar;
+        }else{
+            return $this->name_en;
+        }
+    }
 }

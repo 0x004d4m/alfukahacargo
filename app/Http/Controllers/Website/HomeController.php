@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactRequest;
+use App\Models\Image;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -23,5 +25,18 @@ class HomeController extends Controller
 
         Session::flash('success', true);
         return redirect('/#contact');
+    }
+
+    public function order(Request $request){
+        $Order = Order::where('booking_number',$request->booking_number)->first();
+        if(!$Order){
+            return view('order');
+        }
+
+        $Images = Image::where('order_id',$Order->id)->get();
+        return view('order',[
+            'Order'=>$Order,
+            'Images'=>$Images->groupBy('image_type_id'),
+        ]);
     }
 }

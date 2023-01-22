@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'index']);
 Route::post('/', [HomeController::class,'submit']);
+Route::get('/order', [HomeController::class,'order']);
 Route::get('/set-language/{locale}', [LanguageController::class,'setLanguage'])->name('set-language');

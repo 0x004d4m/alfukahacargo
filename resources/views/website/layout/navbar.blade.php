@@ -18,6 +18,7 @@
             <a href="#about" class="nav-item nav-link">{{__('content.about')}}</a>
             <a href="#service" class="nav-item nav-link">{{__('content.services')}}</a>
             <a href="#contact" class="nav-item nav-link">{{__('content.contact')}}</a>
+            <a href="/admin" class="nav-item nav-link">{{__('content.login')}}</a>
             <a href="/set-language/{{__('content.lang2')}}" class="nav-item nav-link">{{__('content.lang')}}</a>
         </div>
         <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+12164008927</h4>

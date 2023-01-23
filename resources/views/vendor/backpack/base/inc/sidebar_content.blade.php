@@ -61,6 +61,9 @@
             @if(backpack_user()->can('View Order types'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('order-type') }}"><i class="nav-icon la la-question"></i> Order types</a></li>
             @endif
+            @if(backpack_user()->can('View Payment methods'))
+                <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment-method') }}"><i class="nav-icon la la-question"></i> Payment methods</a></li>
+            @endif
         </ul>
     </li>
 @endif
@@ -111,6 +114,14 @@
 </li>
 @endif
 
+@if(backpack_user()->can('Manage Payments'))
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon la la-question"></i> Payments</a></li>
+@endif
+
+@if(backpack_user()->can('Manage Invoices'))
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('invoice') }}"><i class="nav-icon la la-question"></i> Invoices</a></li>
+@endif
+
 @if(backpack_user()->can('Manage Logs'))
     <li class='nav-item'><a class='nav-link' href='{{ backpack_url('log') }}'><i class='nav-icon la la-terminal'></i> Logs</a></li>
 @endif
@@ -125,3 +136,5 @@
         </ul>
     </li>
 @endif
+
+<li class="nav-item"><a class="nav-link" href="{{url('')}}/set-language/{{__('content.lang2')}}"><i class="nav-icon la la-language"></i> <span>{{__('content.lang')}}</span></a></li>

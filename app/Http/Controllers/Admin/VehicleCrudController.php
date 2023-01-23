@@ -50,6 +50,7 @@ class VehicleCrudController extends CrudController
         $this->crud->column('Vehicle for cutting note');
         $this->crud->column('department_id');
         $this->crud->column('note_to_department');
+        $this->crud->column('location');
 
 
     }
@@ -77,6 +78,7 @@ class VehicleCrudController extends CrudController
         $this->crud->field('Vehicle for cutting note');
         $this->crud->field('department_id');
         $this->crud->field('note_to_department');
+        $this->crud->field('location');
     }
 
     protected function setupUpdateOperation()

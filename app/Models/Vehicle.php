@@ -26,6 +26,7 @@ class Vehicle extends Model
         'department_id',
         'note_to_department',
         'order_id',
+        'location',
     ];
 
     public function department()

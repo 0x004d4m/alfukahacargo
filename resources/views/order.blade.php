@@ -7,7 +7,7 @@
                 @if (isset($Order))
                     <table>
                         <tr>
-                            <th class="h3">{{__('order.orderNo')}}: {{$Order->booking_number}}</th>
+                            <th class="h3">{{__('order.vin_number')}}: {{$Order->vehicle->vin_number}}</th>
                             <th>{{__('order.orderStatus')}}: {{$Order->orderStatus->name}}</th>
                             <th>{{__('order.orderType')}}: {{$Order->orderType->name}}</th>
                         </tr>
@@ -15,7 +15,7 @@
                     @if ($Order->vehicle)
                         <div class="col-lg-3">
                             <h3>{{__('order.Vehicle')}}</h3>
-                            <p>{{__('order.vin_number')}}: {{$Order->vehicle->vin_number}}</p>
+
                             <p>{{__('order.year')}}: {{$Order->vehicle->year}}</p>
                             <p>{{__('order.make')}}: {{$Order->vehicle->make}}</p>
                             <p>{{__('order.model')}}: {{$Order->vehicle->model}}</p>

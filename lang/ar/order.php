@@ -79,6 +79,7 @@ return [
     'total_loss'=>"كامل الخسارة",
     'full_cover'=>"تغطية كاملة",
     'Images'=>"الصور",
+    'booking_number'=>"رقم الحجز",
     'No Order With That Number'=>"لا يوجد طلب بهذا الرقم",
 ];
 

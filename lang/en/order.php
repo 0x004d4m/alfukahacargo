@@ -76,6 +76,7 @@ return [
     'total_loss'=>"Total Loss",
     'full_cover'=>"Full Cover",
     'Images'=>"Images",
+    'booking_number'=>"Booking Number",
     'No Order With That Number'=>"No Order With That Number",
 ];
 

@@ -28,7 +28,7 @@ class HomeController extends Controller
     }
 
     public function order(Request $request){
-        $Order = Order::whereHas('vehicle', function($q)use($request){$q->where('vin',$request->vin);},)->first();
+        $Order = Order::whereHas('vehicle', function($q)use($request){$q->where('vin_number',$request->vin);},)->first();
         if(!$Order){
             return view('order');
         }

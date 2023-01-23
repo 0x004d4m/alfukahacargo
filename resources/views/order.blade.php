@@ -15,7 +15,6 @@
                     @if ($Order->vehicle)
                         <div class="col-lg-3">
                             <h3>{{__('order.Vehicle')}}</h3>
-
                             <p>{{__('order.year')}}: {{$Order->vehicle->year}}</p>
                             <p>{{__('order.make')}}: {{$Order->vehicle->make}}</p>
                             <p>{{__('order.model')}}: {{$Order->vehicle->model}}</p>

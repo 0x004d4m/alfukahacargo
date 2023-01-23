@@ -39,13 +39,8 @@
                     @if (count($Images)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Images')}}</h3>
-                            @foreach ($Images as $key=>$group)
-                                {{ App\Models\ImageType::where('id', $key)->first()->name }}<br>
-                                @foreach ($group as $image)
-                                    <a href="{{url($image->image)}}" target="_blank"><img src="{{url($image->image)}}" style="max-height: 25px; width: auto; border-radius: 3px;"></a>
-                                @endforeach
-                                <br>
-                                <br>
+                            @foreach ($Order->images as $image)
+                                <a href="{{url($image->image)}}" target="_blank"><img src="{{url($image->image)}}" style="max-height: 50px; width: auto; border-radius: 3px;"></a>
                             @endforeach
                         </div>
                     @endif

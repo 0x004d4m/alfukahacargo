@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <form action="/order" method="GET">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="vin" placeholder="{{__('order.vin')}}"  required value="@if (Request::has('vin')){{Request::get('vin')}}@endif">
+                <input type="text" class="form-control" name="vin" placeholder="{{__('order.vin_number')}}"  required value="@if (Request::has('vin')){{Request::get('vin')}}@endif">
                 <button class="btn btn-primary input-group-text" >
                     {{__('order.Search')}}
                 </button>

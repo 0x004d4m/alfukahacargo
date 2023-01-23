@@ -30,6 +30,7 @@
                             <p>{{__('order.shipping_line')}}: {{$Order->generalInformation->shipping_line}}</p>
                             <p>{{__('order.branch')}}: {{$Order->generalInformation->branch?->name}}</p>
                             <p>{{__('order.container')}}: {{$Order->generalInformation->container?->name}}</p>
+                            <p>{{__('order.booking_number')}}: {{$Order->generalInformation->booking_number}}</p>
                             <p>{{__('order.finalPort')}}: {{$Order->generalInformation->finalPort?->name}}</p>
                             <p>{{__('order.finalCountry')}}: {{$Order->generalInformation->finalCountry?->name}}</p>
                             <p>{{__('order.finalState')}}: {{$Order->generalInformation->finalState?->name}}</p>

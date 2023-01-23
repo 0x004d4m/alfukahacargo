@@ -58,6 +58,7 @@ class GeneralCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Container'
         ]);
+        $this->crud->column('booking_number');
         $this->crud->addColumn([
             'label' => "Final Port",
             'type' => "select",
@@ -182,6 +183,7 @@ class GeneralCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Container'
         ]);
+        $this->crud->field('booking_number');
         $this->crud->addField([
             'label' => "Final Port",
             'type' => "relationship",

@@ -15,7 +15,6 @@ class Vehicle extends Model
     protected $guarded = ['id'];
     protected $fillable = [
         'vin_number',
-        'booking_number',
         'year',
         'make',
         'model',

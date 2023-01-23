@@ -40,7 +40,6 @@ class VehicleCrudController extends CrudController
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('vin_number');
-        $this->crud->column('booking_number');
         $this->crud->column('year');
         $this->crud->column('make');
         $this->crud->column('model');
@@ -68,7 +67,6 @@ class VehicleCrudController extends CrudController
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('vin_number');
-        $this->crud->field('booking_number');
         $this->crud->field('year');
         $this->crud->field('make');
         $this->crud->field('model');

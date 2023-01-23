@@ -19,6 +19,7 @@ class General extends Model
         'received_date',
         'shipping_line',
         'container_id',
+        'booking_number',
         'final_port_id',
         'final_country_id',
         'final_state_id',

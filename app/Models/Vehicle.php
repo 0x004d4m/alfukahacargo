@@ -26,7 +26,9 @@ class Vehicle extends Model
         'department_id',
         'note_to_department',
         'order_id',
-        'location',
+        'country_id',
+        'state_id',
+        'city_id',
     ];
 
     public function department()
@@ -37,5 +39,20 @@ class Vehicle extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }

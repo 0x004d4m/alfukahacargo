@@ -50,7 +50,30 @@ class VehicleCrudController extends CrudController
         $this->crud->column('Vehicle for cutting note');
         $this->crud->column('department_id');
         $this->crud->column('note_to_department');
-        $this->crud->column('location');
+        $this->crud->addColumn([
+            'label' => "Country",
+            'type' => "select",
+            'name' => 'country_id',
+            'entity' => 'country',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Country'
+        ]);
+        $this->crud->addColumn([
+            'label' => "State",
+            'type' => "select",
+            'name' => 'state_id',
+            'entity' => 'state',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\State'
+        ]);
+        $this->crud->addColumn([
+            'label' => "City",
+            'type' => "select",
+            'name' => 'city_id',
+            'entity' => 'city',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\City'
+        ]);
 
 
     }
@@ -78,7 +101,30 @@ class VehicleCrudController extends CrudController
         $this->crud->field('Vehicle for cutting note');
         $this->crud->field('department_id');
         $this->crud->field('note_to_department');
-        $this->crud->field('location');
+        $this->crud->addField([
+            'label' => "Country",
+            'type' => "relationship",
+            'name' => 'country_id',
+            'entity' => 'country',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Country'
+        ]);
+        $this->crud->addField([
+            'label' => "State",
+            'type' => "relationship",
+            'name' => 'state_id',
+            'entity' => 'state',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\State'
+        ]);
+        $this->crud->addField([
+            'label' => "City",
+            'type' => "relationship",
+            'name' => 'city_id',
+            'entity' => 'city',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\City'
+        ]);
     }
 
     protected function setupUpdateOperation()

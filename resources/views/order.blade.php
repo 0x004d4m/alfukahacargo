@@ -55,7 +55,7 @@
                         </div>
                     @endif
                     <hr>
-                    @if ($Order->inspections)
+                    @if (count($Order->inspections)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Inspections')}}</h3>
                             <table class="table">
@@ -84,7 +84,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->services)
+                    @if (count($Order->services)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Service')}}</h3>
                             <table class="table">
@@ -111,7 +111,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->documents)
+                    @if (count($Order->documents)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Documents')}}</h3>
                             <table class="table">
@@ -140,7 +140,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->notes)
+                    @if (count($Order->notes)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Notes')}}</h3>
                             <table class="table">
@@ -157,7 +157,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->parts)
+                    @if (count($Order->parts)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Parts')}}</h3>
                             <table class="table">
@@ -176,7 +176,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->addonServices)
+                    @if (count($Order->addonServices))
                         <div class="col-lg-6">
                             <h3>{{__('order.Addon Services')}}</h3>
                             <table class="table">
@@ -197,7 +197,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Order->insurances)
+                    @if (count($Order->insurances)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Insurances')}}</h3>
                             <table class="table">
@@ -216,7 +216,7 @@
                             </table>
                         </div>
                     @endif
-                    @if ($Images)
+                    @if (count($Images)>0)
                         <div class="col-lg-6">
                             <h3>{{__('order.Images')}}</h3>
                             @foreach ($Images as $key=>$group)

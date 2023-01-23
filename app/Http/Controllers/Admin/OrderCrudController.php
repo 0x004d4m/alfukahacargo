@@ -32,7 +32,7 @@ class OrderCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->column('booking_number');
+        $this->crud->column('booking_number')->label('name');
 
         $this->crud->addColumn([
             'label' => "Order Type",
@@ -59,7 +59,7 @@ class OrderCrudController extends CrudController
     {
         $this->crud->setValidation(OrderRequest::class);
 
-        $this->crud->field('booking_number');
+        $this->crud->field('booking_number')->label('name');
 
         $this->crud->addField([
             'label' => "Order Type",

@@ -43,8 +43,8 @@ class InsuranceCrudController extends CrudController
         $this->crud->column('vehicle_value_en');
         $this->crud->column('total_loss');
         $this->crud->column('full_cover');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

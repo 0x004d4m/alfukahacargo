@@ -42,8 +42,8 @@ class StateCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Country'
         ]);
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

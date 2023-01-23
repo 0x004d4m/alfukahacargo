@@ -35,8 +35,8 @@ class ContactRequestCrudController extends CrudController
         $this->crud->column('email');
         $this->crud->column('subject');
         $this->crud->column('message');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

@@ -62,8 +62,8 @@ class InvoiceCrudController extends CrudController
         $this->crud->column('amount');
         $this->crud->column('amount_paid');
         $this->crud->column('amount_due');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
 
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\OrderRequest;
+use App\Models\Order;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 class OrderCrudController extends CrudController
@@ -50,8 +51,8 @@ class OrderCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\OrderStatus'
         ]);
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()
@@ -87,5 +88,11 @@ class OrderCrudController extends CrudController
     protected function setupShowOperation()
     {
         $this->setupListOperation();
+    }
+
+    public function show($id)
+    {
+        $Order = Order::where('id',$id)->first();
+        return redirect(url('/order').'?booking_number='.$Order->booking_number);
     }
 }

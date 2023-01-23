@@ -61,8 +61,8 @@ class ServiceCrudController extends CrudController
         $this->crud->column('quantity');
         $this->crud->column('amount');
         $this->crud->addColumn(['name' => 'invoice','type' => 'link']);
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
     protected function setupCreateOperation()
     {

@@ -38,8 +38,8 @@ class PaymentCrudController extends CrudController
         $this->crud->column('memo');
         $this->crud->column('paid_at');
         $this->crud->column('amount');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

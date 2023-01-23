@@ -41,8 +41,8 @@ class NoteCrudController extends CrudController
         ]);
         $this->crud->column('date');
         $this->crud->column('note');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

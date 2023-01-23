@@ -50,8 +50,8 @@ class VehicleCrudController extends CrudController
         $this->crud->column('Vehicle for cutting note');
         $this->crud->column('department_id');
         $this->crud->column('note_to_department');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

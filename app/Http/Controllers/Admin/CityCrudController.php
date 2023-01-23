@@ -52,8 +52,8 @@ class CityCrudController extends CrudController
             'model' => 'App\Models\State'
         ]);
 
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

@@ -49,8 +49,8 @@ class PartCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Branch'
         ]);
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

@@ -44,8 +44,8 @@ class AddonServiceCrudController extends CrudController
         $this->crud->column('price');
         $this->crud->column('completed');
         $this->crud->column('note');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

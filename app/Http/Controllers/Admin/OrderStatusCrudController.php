@@ -33,8 +33,8 @@ class OrderStatusCrudController extends CrudController
     {
         $this->crud->column('name_ar');
         $this->crud->column('name_en');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

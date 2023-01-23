@@ -47,8 +47,8 @@ class InspectionCrudController extends CrudController
         $this->crud->column('wheels');
         $this->crud->column('airbag');
         $this->crud->column('radio');
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

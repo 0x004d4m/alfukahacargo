@@ -70,8 +70,8 @@ class AuctionLocationCrudController extends CrudController
             'model' => 'App\Models\City'
         ]);
 
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

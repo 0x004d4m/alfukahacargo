@@ -68,8 +68,8 @@ class DocumentCrudController extends CrudController
         $this->crud->column('title_received_date');
         $this->crud->column('bill_of_sale');
         $this->crud->addColumn(['name' => 'copy_of_original_title','type' => 'link']);
-        $this->crud->column('created_at');
-        $this->crud->column('updated_at');
+
+
     }
 
     protected function setupCreateOperation()

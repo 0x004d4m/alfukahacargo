@@ -26,21 +26,21 @@ class Payment extends Model
 
     public function payer()
     {
-        return $this->hasMany(Company::class,'payer_id');
+        return $this->belongsTo(Company::class,'payer_id');
     }
 
     public function receiver()
     {
-        return $this->hasMany(Company::class,'receiver_id');
+        return $this->belongsTo(Company::class,'receiver_id');
     }
 
     public function paymentMethod()
     {
-        return $this->hasMany(PaymentMethod::class);
+        return $this->belongsTo(PaymentMethod::class);
     }
 
     public function invoice()
     {
-        return $this->hasMany(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 }

@@ -605,40 +605,40 @@ class OrderCrudController extends CrudController
             'label'          => 'Inspection',
             'backpack_crud'  => 'inspection',
             'visible' => function($entry){
-                return count($entry)>0;
+                return is_null($entry->inspection);
             },
             'buttons' => false,
-            'fields'         => [
+            'columns'         => [
                 [
                     'label' => 'Color',
                     'name'  => 'color',
                 ],
                 [
-                    'label' => 'damage',
+                    'label' => 'Damage',
                     'name'  => 'damage',
                 ],
                 [
-                    'label' => 'new',
+                    'label' => 'New',
                     'name'  => 'new',
                 ],
                 [
-                    'label' => 'keys',
+                    'label' => 'Keys',
                     'name'  => 'keys',
                 ],
                 [
-                    'label' => 'running',
+                    'label' => 'Running',
                     'name'  => 'running',
                 ],
                 [
-                    'label' => 'wheels',
+                    'label' => 'Wheels',
                     'name'  => 'wheels',
                 ],
                 [
-                    'label' => 'airbag',
+                    'label' => 'Airbag',
                     'name'  => 'airbag',
                 ],
                 [
-                    'label' => 'radio',
+                    'label' => 'Radio',
                     'name'  => 'radio',
                 ],
             ],

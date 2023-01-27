@@ -140,7 +140,7 @@ class Order extends Model
         return $this->belongsTo(OrderType::class);
     }
 
-    public function inspections()
+    public function inspection()
     {
         return $this->hasOne(Inspection::class);
     }

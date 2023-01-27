@@ -601,7 +601,7 @@ class OrderCrudController extends CrudController
 
         Widget::add([
             'type'           => 'relation_panel',
-            'name'           => 'inspections',
+            'name'           => 'inspection',
             'label'          => 'Inspection',
             'backpack_crud'  => 'inspection',
             'visible' => function($entry){

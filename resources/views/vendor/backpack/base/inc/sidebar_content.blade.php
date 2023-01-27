@@ -102,11 +102,11 @@
 </li>
 @endif
 
-@if(backpack_user()->can('Manage Invoices'))
+@if(backpack_user()->can('View Invoices'))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('invoice') }}"><i class="nav-icon la la-question"></i> Invoices</a></li>
 @endif
 
-@if(backpack_user()->can('Manage Payments'))
+@if(backpack_user()->can('View Payments'))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon la la-question"></i> Payments</a></li>
 @endif
 

@@ -142,7 +142,7 @@ class Order extends Model
 
     public function inspections()
     {
-        return $this->hasMany(Inspection::class);
+        return $this->hasOne(Inspection::class);
     }
 
     public function services()

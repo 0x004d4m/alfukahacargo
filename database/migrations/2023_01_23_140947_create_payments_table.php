@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreign('receiver_id')->references('id')->on('companies');
             $table->unsignedBigInteger('payment_method_id')->nullable();
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
+            $table->unsignedBigInteger('invoice_id')->nullable();
+            $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->string('number')->nullable();
             $table->string('memo')->nullable();
             $table->string('paid_at')->nullable();

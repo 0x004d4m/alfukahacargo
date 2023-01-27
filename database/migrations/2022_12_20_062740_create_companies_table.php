@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name_ar');
             $table->string('name_en');
-            $table->unsignedBigInteger('company_type_id');
+            $table->unsignedBigInteger('company_type_id')->nullable();
             $table->foreign('company_type_id')->references('id')->on('company_types');
-            $table->unsignedBigInteger('legal_status_id');
+            $table->unsignedBigInteger('legal_status_id')->nullable();
             $table->foreign('legal_status_id')->references('id')->on('legal_statuses');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');

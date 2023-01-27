@@ -3,53 +3,44 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Payment extends Model
 {
-    use CrudTrait;
-
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use CrudTrait, SoftDeletes, HasFactory;
 
     protected $table = 'payments';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
-    // protected $dates = [];
+    protected $fillable = [
+        'payer_id',
+        'receiver_id',
+        'payment_method_id',
+        'invoice_id',
+        'number',
+        'memo',
+        'paid_at',
+        'amount',
+    ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | FUNCTIONS
-    |--------------------------------------------------------------------------
-    */
+    public function payer()
+    {
+        return $this->hasMany(Company::class);
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | RELATIONS
-    |--------------------------------------------------------------------------
-    */
+    public function receiver()
+    {
+        return $this->hasMany(Company::class);
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
+    public function paymentMethod()
+    {
+        return $this->hasMany(PaymentMethod::class);
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ACCESSORS
-    |--------------------------------------------------------------------------
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
+    public function invoice()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

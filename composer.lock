@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60144aad00278f6b712f63478eee7437",
+    "content-hash": "2eaa6b16926df672b11fab8aa626dbb9",
     "packages": [
         {
             "name": "backpack/crud",
@@ -1753,6 +1753,139 @@
             "time": "2022-05-21T17:30:32+00:00"
         },
         {
+            "name": "izica/relations-widgets-for-backpack",
+            "version": "3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/izica/relations-widgets-for-backpack.git",
+                "reference": "87dcc57d4fb94c2802ea43d537d403af80c976a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/izica/relations-widgets-for-backpack/zipball/87dcc57d4fb94c2802ea43d537d403af80c976a8",
+                "reference": "87dcc57d4fb94c2802ea43d537d403af80c976a8",
+                "shasum": ""
+            },
+            "require": {
+                "backpack/crud": "^4.0|^4.1.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "izica\\RelationsWidgets\\RelationsWidgetsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "izica\\RelationsWidgets\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artyom Golovarchuk",
+                    "email": "artemiztomska@gmail.com",
+                    "homepage": "https://github.com/izica/relations-widgets-for-backpack"
+                }
+            ],
+            "description": "Widgets for preview model relations in laravel backpack",
+            "homepage": "https://github.com/izica/relations-widgets-for-backpack",
+            "keywords": [
+                "Backpack for Laravel",
+                "addon",
+                "admin panel",
+                "backpack",
+                "laravel",
+                "laravel backpack",
+                "plugin",
+                "relations",
+                "widget",
+                "widgets"
+            ],
+            "support": {
+                "issues": "https://github.com/izica/relations-widgets-for-backpack/issues",
+                "source": "https://github.com/izica/relations-widgets-for-backpack/tree/3.2"
+            },
+            "time": "2022-05-08T15:41:21+00:00"
+        },
+        {
+            "name": "jargoud/laravel-backpack-dropzone",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jargoud/laravel-backpack-dropzone.git",
+                "reference": "c309950f16483575a8b61f0fff7e8f8375c705d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jargoud/laravel-backpack-dropzone/zipball/c309950f16483575a8b61f0fff7e8f8375c705d1",
+                "reference": "c309950f16483575a8b61f0fff7e8f8375c705d1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.1|^8.0",
+                "pion/laravel-chunk-upload": "^1.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jargoud\\LaravelBackpackDropzone\\Providers\\LaravelBackpackDropzoneServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jargoud\\LaravelBackpackDropzone\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Jargoud\\LaravelBackpackDropzone\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jérémy Argoud",
+                    "email": "jeremy.argoud@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dropzone field for Laravel Backpack",
+            "homepage": "https://github.com/jargoud/laravel-backpack-dropzone",
+            "keywords": [
+                "jargoud",
+                "laravel-backpack-dropzone"
+            ],
+            "support": {
+                "source": "https://github.com/jargoud/laravel-backpack-dropzone/tree/2.0.1",
+                "issues": "https://github.com/jargoud/laravel-backpack-dropzone/issues"
+            },
+            "time": "2022-07-18T09:44:30+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v9.43.0",
             "source": {
@@ -3101,6 +3234,72 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "pion/laravel-chunk-upload",
+            "version": "v1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pionl/laravel-chunk-upload.git",
+                "reference": "e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pionl/laravel-chunk-upload/zipball/e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6",
+                "reference": "e1ffe87e8a50a6a8cf8204c6afd46f6df99083e6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/filesystem": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/http": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0",
+                "illuminate/support": "5.2 - 5.8 | ^6.0 | ^7.0 | ^8.0 | ^9.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16.0",
+                "mockery/mockery": "^1.1.0 | ^1.3.0",
+                "overtrue/phplint": "^1.1 | ^2.0",
+                "phpunit/phpunit": "5.7 | 6.0 | 7.0 | 7.5 | 8.4 | ^8.5 | ^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pion\\Laravel\\ChunkUpload\\Providers\\ChunkUploadServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pion\\Laravel\\ChunkUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Kluska",
+                    "email": "martin@kluska.cz"
+                }
+            ],
+            "description": "Service for chunked upload with several js providers",
+            "support": {
+                "issues": "https://github.com/pionl/laravel-chunk-upload/issues",
+                "source": "https://github.com/pionl/laravel-chunk-upload/tree/v1.5.1"
+            },
+            "funding": [
+                {
+                    "url": "https://revolut.me/martinpv7n",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/pionl",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-31T07:30:45+00:00"
         },
         {
             "name": "prologue/alerts",

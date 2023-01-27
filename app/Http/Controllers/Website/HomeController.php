@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactRequest;
-use App\Models\Image;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -28,15 +27,13 @@ class HomeController extends Controller
     }
 
     public function order(Request $request){
-        $Order = Order::whereHas('vehicle', function($q)use($request){$q->where('vin_number',$request->vin);},)->first();
+        $Order = Order::where('vin_number', $request->vin)->first();
         if(!$Order){
             return view('order');
         }
 
-        $Images = Image::where('order_id',$Order->id)->get();
         return view('order',[
             'Order'=>$Order,
-            'Images'=>$Images->groupBy('image_type_id'),
         ]);
     }
 }

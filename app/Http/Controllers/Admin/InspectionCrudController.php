@@ -15,7 +15,7 @@ class InspectionCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Inspections'))
+        if (!backpack_user()->can('View Inspections'))
         {
             abort(403, 'Access denied');
         }
@@ -36,7 +36,7 @@ class InspectionCrudController extends CrudController
             'type' => "select",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('color');
@@ -60,7 +60,7 @@ class InspectionCrudController extends CrudController
             'type' => "relationship",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('color');

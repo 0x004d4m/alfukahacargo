@@ -11,6 +11,8 @@
         "backpack/permissionmanager": "^6.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "izica/relations-widgets-for-backpack": "^3.2",
+        "jargoud/laravel-backpack-dropzone": "^2.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.10",
@@ -70,5 +72,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "laravel-backpack-dropzone": {
+            "type": "vcs",
+            "url": "https://github.com/jargoud/laravel-backpack-dropzone.git"
+        }
+    }
 }

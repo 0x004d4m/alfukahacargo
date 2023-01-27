@@ -15,7 +15,7 @@ class InsuranceCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Insurances'))
+        if (!backpack_user()->can('View Insurances'))
         {
             abort(403, 'Access denied');
         }
@@ -36,7 +36,7 @@ class InsuranceCrudController extends CrudController
             'type' => "select",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('vehicle_value_ar');
@@ -56,7 +56,7 @@ class InsuranceCrudController extends CrudController
             'type' => "relationship",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('vehicle_value_ar');

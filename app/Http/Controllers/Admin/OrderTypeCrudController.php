@@ -15,7 +15,7 @@ class OrderTypeCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Order types'))
+        if (!backpack_user()->can('View Order types'))
         {
             abort(403, 'Access denied');
         }

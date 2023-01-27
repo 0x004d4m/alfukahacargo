@@ -15,7 +15,7 @@ class RateCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Rates'))
+        if (!backpack_user()->can('View Rates'))
         {
             abort(403, 'Access denied');
         }

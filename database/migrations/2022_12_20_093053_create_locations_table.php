@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('rates', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('locations');
     }
 };

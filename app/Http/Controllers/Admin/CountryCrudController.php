@@ -15,7 +15,7 @@ class CountryCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Countries'))
+        if (!backpack_user()->can('View Countries'))
         {
             abort(403, 'Access denied');
         }

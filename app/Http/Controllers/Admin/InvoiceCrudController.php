@@ -15,7 +15,7 @@ class InvoiceCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Invoices'))
+        if (!backpack_user()->can('View Invoices'))
         {
             abort(403, 'Access denied');
         }

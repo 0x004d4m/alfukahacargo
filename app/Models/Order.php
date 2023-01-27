@@ -14,10 +14,122 @@ class Order extends Model
     protected $table = 'orders';
     protected $guarded = ['id'];
     protected $fillable = [
-        'booking_number',
+        'company_id',
         'order_type_id',
         'order_status_id',
+        'branch_id',
+        'department_id',
+        'location_id',
+        'start_port_id',
+        'start_country_id',
+        'start_state_id',
+        'start_city_id',
+        'final_port_id',
+        'final_country_id',
+        'final_state_id',
+        'final_city_id',
+        'consigned_to_id',
+        'seller_id',
+        'auction_id',
+        'vin_number',
+        'year',
+        'make',
+        'model',
+        'type',
+        'sale_origin',
+        'order_parts',
+        'order_parts_note',
+        'vehicle_for_cutting',
+        'vehicle_for_cutting_note',
+        'note_to_department',
+        'order_date',
+        'received_date',
+        'shipping_line',
+        'container_number',
+        'booking_number',
+        'images',
     ];
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function startPort()
+    {
+        return $this->belongsTo(Port::class,'start_port_id');
+    }
+
+    public function startCountry()
+    {
+        return $this->belongsTo(Country::class,'start_country_id');
+    }
+
+    public function startState()
+    {
+        return $this->belongsTo(State::class,'start_state_id');
+    }
+
+    public function startCity()
+    {
+        return $this->belongsTo(City::class,'start_city_id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    public function finalPort()
+    {
+        return $this->belongsTo(Port::class, 'final_port_id');
+    }
+
+    public function finalCountry()
+    {
+        return $this->belongsTo(Country::class,'final_country_id');
+    }
+
+    public function finalState()
+    {
+        return $this->belongsTo(State::class,'final_state_id');
+    }
+
+    public function finalCity()
+    {
+        return $this->belongsTo(City::class,'final_city_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function consignedTo()
+    {
+        return $this->belongsTo(Company::class,'consigned_to_id');
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(Company::class,'seller_id');
+    }
+
+    public function auction()
+    {
+        return $this->belongsTo(Auction::class);
+    }
+
     public function orderStatus()
     {
         return $this->belongsTo(OrderStatus::class);
@@ -26,16 +138,6 @@ class Order extends Model
     public function orderType()
     {
         return $this->belongsTo(OrderType::class);
-    }
-
-    public function generalInformation()
-    {
-        return $this->hasOne(General::class);
-    }
-
-    public function vehicle()
-    {
-        return $this->hasOne(Vehicle::class);
     }
 
     public function inspections()
@@ -73,8 +175,8 @@ class Order extends Model
         return $this->hasMany(Insurance::class);
     }
 
-    public function images()
+    public function setImagesAttribute($value)
     {
-        return $this->hasMany(Image::class);
+        $this->attributes['images'] = json_encode($value);
     }
 }

@@ -15,7 +15,7 @@ class DepartmentCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Departments'))
+        if (!backpack_user()->can('View Departments'))
         {
             abort(403, 'Access denied');
         }

@@ -15,7 +15,7 @@ class PortCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Ports'))
+        if (!backpack_user()->can('View Ports'))
         {
             abort(403, 'Access denied');
         }

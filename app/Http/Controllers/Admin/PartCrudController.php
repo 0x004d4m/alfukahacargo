@@ -15,7 +15,7 @@ class PartCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Parts'))
+        if (!backpack_user()->can('View Parts'))
         {
             abort(403, 'Access denied');
         }
@@ -36,7 +36,7 @@ class PartCrudController extends CrudController
             'type' => "select",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('order_parts_note');
@@ -62,7 +62,7 @@ class PartCrudController extends CrudController
             'type' => "relationship",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('order_parts_note');

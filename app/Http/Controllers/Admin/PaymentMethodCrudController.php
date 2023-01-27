@@ -15,7 +15,7 @@ class PaymentMethodCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Payment methods'))
+        if (!backpack_user()->can('View Payment methods'))
         {
             abort(403, 'Access denied');
         }

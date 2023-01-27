@@ -15,7 +15,7 @@ class StateCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage States'))
+        if (!backpack_user()->can('View States'))
         {
             abort(403, 'Access denied');
         }

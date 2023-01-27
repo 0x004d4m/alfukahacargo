@@ -15,7 +15,7 @@ class PaymentCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Payments'))
+        if (!backpack_user()->can('View Payments'))
         {
             abort(403, 'Access denied');
         }
@@ -31,24 +31,80 @@ class PaymentCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        $this->crud->column('payer_id');
-        $this->crud->column('receiver_id');
-        $this->crud->column('payment_method_id');
+        $this->crud->addColumn([
+            'label' => "Payer",
+            'type' => "select",
+            'name' => 'payer_id',
+            'entity' => 'payer',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Company'
+        ]);
+        $this->crud->addColumn([
+            'label' => "Receiver",
+            'type' => "select",
+            'name' => 'receiver_id',
+            'entity' => 'receiver',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Company'
+        ]);
+        $this->crud->addColumn([
+            'label' => "Payment Method",
+            'type' => "select",
+            'name' => 'payment_method_id',
+            'entity' => 'paymentMethod',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\PaymentMethod'
+        ]);
+        $this->crud->addColumn([
+            'label' => "Invoice",
+            'type' => "select",
+            'name' => 'invoice_id',
+            'entity' => 'invoice',
+            'attribute' => "number",
+            'model' => 'App\Models\Invoice'
+        ]);
         $this->crud->column('number');
         $this->crud->column('memo');
         $this->crud->column('paid_at');
         $this->crud->column('amount');
-
-
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(PaymentRequest::class);
 
-        $this->crud->field('payer_id');
-        $this->crud->field('receiver_id');
-        $this->crud->field('payment_method_id');
+        $this->crud->addField([
+            'label' => "Payer",
+            'type' => "relationship",
+            'name' => 'payer_id',
+            'entity' => 'payer',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Company'
+        ]);
+        $this->crud->addField([
+            'label' => "Receiver",
+            'type' => "relationship",
+            'name' => 'receiver_id',
+            'entity' => 'receiver',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\Company'
+        ]);
+        $this->crud->addField([
+            'label' => "Payment Method",
+            'type' => "relationship",
+            'name' => 'payment_method_id',
+            'entity' => 'paymentMethod',
+            'attribute' => "name_".app()->getLocale(),
+            'model' => 'App\Models\PaymentMethod'
+        ]);
+        $this->crud->addField([
+            'label' => "Invoice",
+            'type' => "relationship",
+            'name' => 'invoice_id',
+            'entity' => 'invoice',
+            'attribute' => "number",
+            'model' => 'App\Models\Invoice'
+        ]);
         $this->crud->field('number');
         $this->crud->field('memo');
         $this->crud->field('paid_at');

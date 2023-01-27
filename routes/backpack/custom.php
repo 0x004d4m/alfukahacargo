@@ -31,12 +31,8 @@ Route::group([
     Route::crud('department', 'DepartmentCrudController');
     Route::crud('branch', 'BranchCrudController');
     Route::crud('loading-status', 'LoadingStatusCrudController');
-    Route::crud('container', 'ContainerCrudController');
     Route::crud('order-status', 'OrderStatusCrudController');
-    Route::crud('image-type', 'ImageTypeCrudController');
     Route::crud('order', 'OrderCrudController');
-    Route::crud('general', 'GeneralCrudController');
-    Route::crud('vehicle', 'VehicleCrudController');
     Route::crud('inspection', 'InspectionCrudController');
     Route::crud('service', 'ServiceCrudController');
     Route::crud('document', 'DocumentCrudController');
@@ -44,9 +40,9 @@ Route::group([
     Route::crud('part', 'PartCrudController');
     Route::crud('addon-service', 'AddonServiceCrudController');
     Route::crud('insurance', 'InsuranceCrudController');
-    Route::crud('image', 'ImageCrudController');
     Route::crud('order-type', 'OrderTypeCrudController');
     Route::crud('payment-method', 'PaymentMethodCrudController');
     Route::crud('payment', 'PaymentCrudController');
     Route::crud('invoice', 'InvoiceCrudController');
+    Route::crud('location', 'LocationCrudController');
 }); // this should be the absolute last line of this file

@@ -15,7 +15,7 @@ class LoadingStatusCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Loading statuses'))
+        if (!backpack_user()->can('View Loading statuses'))
         {
             abort(403, 'Access denied');
         }

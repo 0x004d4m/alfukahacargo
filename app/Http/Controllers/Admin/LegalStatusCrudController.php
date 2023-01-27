@@ -15,7 +15,7 @@ class LegalStatusCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Legal statuses'))
+        if (!backpack_user()->can('View Legal statuses'))
         {
             abort(403, 'Access denied');
         }

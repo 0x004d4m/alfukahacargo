@@ -5,7 +5,11 @@
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('contact-request') }}"><i class="nav-icon la la-question"></i> Contact requests</a></li>
 @endif
 
-@if(backpack_user()->can('View Company types') || backpack_user()->can('View Legal statuses') || backpack_user()->can('View Countries') || backpack_user()->can('View Cities') || backpack_user()->can('View States') || backpack_user()->can('View Companies') || backpack_user()->can('View Auctions') || backpack_user()->can('View Auction locations') || backpack_user()->can('View Cargo types') || backpack_user()->can('View Ports') || backpack_user()->can('View Rates') || backpack_user()->can('View Departments') || backpack_user()->can('View Branches') || backpack_user()->can('View Loading statuses') || backpack_user()->can('View Order statuses') || backpack_user()->can('View Image types') || backpack_user()->can('View Order types'))
+@if(backpack_user()->can('View Rates'))
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('rate') }}"><i class="nav-icon la la-question"></i> Rates</a></li>
+@endif
+
+@if(backpack_user()->can('View Company types') || backpack_user()->can('View Legal statuses') || backpack_user()->can('View Countries') || backpack_user()->can('View Cities') || backpack_user()->can('View States') || backpack_user()->can('View Companies') || backpack_user()->can('View Auctions') || backpack_user()->can('View Auction locations') || backpack_user()->can('View Cargo types') || backpack_user()->can('View Ports') || backpack_user()->can('View Departments') || backpack_user()->can('View Branches') || backpack_user()->can('View Loading statuses') || backpack_user()->can('View Order statuses') || backpack_user()->can('View Order types') || backpack_user()->can('View Locations'))
     <!-- Basic Setup -->
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Basic Setup</a>
@@ -40,9 +44,6 @@
             @if(backpack_user()->can('View Ports'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('port') }}"><i class="nav-icon la la-question"></i> Ports</a></li>
             @endif
-            @if(backpack_user()->can('View Rates'))
-                <li class="nav-item"><a class="nav-link" href="{{ backpack_url('rate') }}"><i class="nav-icon la la-question"></i> Rates</a></li>
-            @endif
             @if(backpack_user()->can('View Departments'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('department') }}"><i class="nav-icon la la-question"></i> Departments</a></li>
             @endif
@@ -55,36 +56,26 @@
             @if(backpack_user()->can('View Order statuses'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('order-status') }}"><i class="nav-icon la la-question"></i> Order statuses</a></li>
             @endif
-            @if(backpack_user()->can('View Image types'))
-                <li class="nav-item"><a class="nav-link" href="{{ backpack_url('image-type') }}"><i class="nav-icon la la-question"></i> Image types</a></li>
-            @endif
             @if(backpack_user()->can('View Order types'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('order-type') }}"><i class="nav-icon la la-question"></i> Order types</a></li>
             @endif
             @if(backpack_user()->can('View Payment methods'))
                 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment-method') }}"><i class="nav-icon la la-question"></i> Payment methods</a></li>
             @endif
+            @if(backpack_user()->can('View Locations'))
+                <li class="nav-item"><a class="nav-link" href="{{ backpack_url('location') }}"><i class="nav-icon la la-question"></i> Locations</a></li>
+            @endif
         </ul>
     </li>
 @endif
 
-@if(backpack_user()->can('View Containers'))
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('container') }}"><i class="nav-icon la la-question"></i> Containers</a></li>
-@endif
-
-@if(backpack_user()->can('View Orders') || backpack_user()->can('View General Information') || backpack_user()->can('View Vehicles') || backpack_user()->can('View Inspections') || backpack_user()->can('View Services') || backpack_user()->can('View Documents') || backpack_user()->can('View Notes') || backpack_user()->can('View Parts') || backpack_user()->can('View Addon services') || backpack_user()->can('View Insurances') || backpack_user()->can('View Images'))
+@if(backpack_user()->can('View Orders') || backpack_user()->can('View General Information') || backpack_user()->can('View Vehicles') || backpack_user()->can('View Inspections') || backpack_user()->can('View Services') || backpack_user()->can('View Documents') || backpack_user()->can('View Notes') || backpack_user()->can('View Parts') || backpack_user()->can('View Addon services') || backpack_user()->can('View Insurances'))
 <!-- Orders -->
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Orders</a>
     <ul class="nav-dropdown-items">
         @if(backpack_user()->can('View Orders'))
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('order') }}"><i class="nav-icon la la-question"></i> Orders</a></li>
-        @endif
-        @if(backpack_user()->can('View General Information'))
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('general') }}"><i class="nav-icon la la-question"></i> General Information</a></li>
-        @endif
-        @if(backpack_user()->can('View Vehicles'))
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('vehicle') }}"><i class="nav-icon la la-question"></i> Vehicles</a></li>
         @endif
         @if(backpack_user()->can('View Inspections'))
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('inspection') }}"><i class="nav-icon la la-question"></i> Inspections</a></li>
@@ -107,19 +98,16 @@
         @if(backpack_user()->can('View Insurances'))
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('insurance') }}"><i class="nav-icon la la-question"></i> Insurances</a></li>
         @endif
-        @if(backpack_user()->can('View Images'))
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('image') }}"><i class="nav-icon la la-question"></i> Images</a></li>
-        @endif
     </ul>
 </li>
 @endif
 
-@if(backpack_user()->can('Manage Payments'))
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon la la-question"></i> Payments</a></li>
-@endif
-
 @if(backpack_user()->can('Manage Invoices'))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('invoice') }}"><i class="nav-icon la la-question"></i> Invoices</a></li>
+@endif
+
+@if(backpack_user()->can('Manage Payments'))
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon la la-question"></i> Payments</a></li>
 @endif
 
 @if(backpack_user()->can('Manage Logs'))

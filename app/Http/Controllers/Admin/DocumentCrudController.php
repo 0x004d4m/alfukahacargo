@@ -15,7 +15,7 @@ class DocumentCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Documents'))
+        if (!backpack_user()->can('View Documents'))
         {
             abort(403, 'Access denied');
         }
@@ -36,7 +36,7 @@ class DocumentCrudController extends CrudController
             'type' => "select",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('title');
@@ -81,7 +81,7 @@ class DocumentCrudController extends CrudController
             'type' => "relationship",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('title');

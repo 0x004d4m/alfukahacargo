@@ -37,7 +37,7 @@ class AddonServiceCrudController extends CrudController
             'type' => "select",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->column('name_en');
@@ -57,7 +57,7 @@ class AddonServiceCrudController extends CrudController
             'type' => "relationship",
             'name' => 'order_id',
             'entity' => 'order',
-            'attribute' => "booking_number",
+            'attribute' => "vin_number",
             'model' => 'App\Models\Order'
         ]);
         $this->crud->field('name_ar');

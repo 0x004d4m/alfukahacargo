@@ -15,7 +15,7 @@ class OrderStatusCrudController extends CrudController
 
     public function setup()
     {
-        if (!backpack_user()->can('Manage Order statuses'))
+        if (!backpack_user()->can('View Order statuses'))
         {
             abort(403, 'Access denied');
         }

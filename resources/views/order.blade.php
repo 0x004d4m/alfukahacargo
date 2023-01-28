@@ -102,11 +102,7 @@
 @section('scripts')
 <script>
     function view($id){
-        const allElements = document.querySelectorAll('carousel-item');
-
-        allElements.forEach((element) => {
-            element.classList.remove('active');
-        });
+        $('.carousel-item').removeClass('active');
         $('#image_'+$id).addClass('active');
     }
 </script>

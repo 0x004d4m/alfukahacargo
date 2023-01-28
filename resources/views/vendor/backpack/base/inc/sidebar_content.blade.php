@@ -111,6 +111,7 @@
 
 @if(backpack_user()->can('View Payments'))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon la la-hand-holding-usd"></i> Payments</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('fee') }}"><i class="nav-icon la la-hand-holding-usd"></i> Fees</a></li>
 @endif
 
 @if(backpack_user()->can('Manage Logs'))

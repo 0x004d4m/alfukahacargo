@@ -27,11 +27,17 @@ class Invoice extends Model
     ];
     protected $appends = [
         'view_amount',
+        'view_amount2',
     ];
 
     public function getViewAmountAttribute()
     {
-        return $this->number." - (Amount: $this->amount_due, Paid: $this->amount_paid, Due: $this->amount_due)";
+        return ($this->order->vin_number??'')." - ".$this->number." - (Amount: $this->amount_due, Paid: $this->amount_paid, Due: $this->amount_due)";
+    }
+
+    public function getViewAmount2Attribute()
+    {
+        return ($this->order->vin_number??'')." - ".$this->number;
     }
 
     public function order()
@@ -59,6 +65,11 @@ class Invoice extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function fees()
+    {
+        return $this->hasMany(Fee::class);
+    }
+
     protected static function booted()
     {
         static::creating(function ($Invoice) {
@@ -67,6 +78,7 @@ class Invoice extends Model
         });
         static::deleting(function ($Invoice) {
             $Invoice->payments()->delete();
+            $Invoice->fees()->delete();
         });
     }
 }

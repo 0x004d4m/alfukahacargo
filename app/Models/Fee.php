@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Payment extends Model
+class Fee extends Model
 {
     use CrudTrait, SoftDeletes, HasFactory;
 
-    protected $table = 'payments';
+    protected $table = 'fees';
     protected $guarded = ['id'];
+
     protected $fillable = [
-        'payment_method_id',
         'invoice_id',
         'number',
         'memo',
-        'paid_at',
         'amount',
     ];
 
@@ -34,20 +33,16 @@ class Payment extends Model
 
     protected static function booted()
     {
-        static::creating(function ($Payment) {
-            $Invoice = Invoice::where('id',$Payment->invoice->id)->first();
-            $paied=((double)$Invoice->amount_paid + (double)$Payment->amount);
+        static::creating(function ($Fee) {
+            $Invoice = Invoice::where('id',$Fee->invoice->id)->first();
             $Invoice->update([
-                'amount_due'=>((double)$Invoice->amount - (double)$paied),
-                'amount_paid'=>$paied,
+                'amount_due'=>((double)$Invoice->amount_due + (double)$Fee->amount),
             ]);
         });
-        static::deleting(function ($Payment) {
-            $Invoice = Invoice::where('id',$Payment->invoice->id)->first();
-            $paied=((double)$Invoice->amount_paid - (double)$Payment->amount);
+        static::deleting(function ($Fee) {
+            $Invoice = Invoice::where('id',$Fee->invoice->id)->first();
             $Invoice->update([
-                'amount_due'=>((double)$Invoice->amount + (double)$paied),
-                'amount_paid'=>$paied,
+                'amount_due'=>((double)$Invoice->amount_due - (double)$Fee->amount),
             ]);
         });
     }

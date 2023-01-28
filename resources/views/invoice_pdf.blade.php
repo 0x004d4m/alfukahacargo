@@ -45,10 +45,25 @@
             </tr>
         </table>
         <br><br><br>
+        <h3>Fees</h3>
         <table width="100%">
             <tr style="background-color: lightgray;">
-                <th>Payer</th>
-                <th>Receiver</th>
+                <th>Number</th>
+                <th>Amount</th>
+                <th>Note</th>
+            </tr>
+            @foreach ($Invoice->fees as $Fee)
+                <tr>
+                    <td>{{$Fee->number??""}}</td>
+                    <td>{{$Fee->amount??""}}</td>
+                    <td>{{$Fee->memo??""}}</td>
+                </tr>
+            @endforeach
+        </table>
+        <br><br><br>
+        <h3>Payments</h3>
+        <table width="100%">
+            <tr style="background-color: lightgray;">
                 <th>Payment Method</th>
                 <th>Number</th>
                 <th>Paid At</th>
@@ -57,8 +72,6 @@
             </tr>
             @foreach ($Invoice->payments as $Payment)
                 <tr>
-                    <td>{{$Payment->payer->name_ar??""}}</td>
-                    <td>{{$Payment->receiver->name_ar??""}}</td>
                     <td>{{$Payment->paymentMethod->name_ar??""}}</td>
                     <td>{{$Payment->number??""}}</td>
                     <td>{{$Payment->paid_at??""}}</td>

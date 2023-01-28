@@ -175,8 +175,35 @@ class Order extends Model
         return $this->hasMany(Insurance::class);
     }
 
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function setImagesAttribute($value)
     {
         $this->attributes['images'] = json_encode($value);
+    }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($Order) {
+            $Order->inspection()->delete();
+            $Order->services()->delete();
+            $Order->documents()->delete();
+            $Order->notes()->delete();
+            $Order->parts()->delete();
+            $Order->addonServices()->delete();
+            $Order->addonServices()->delete();
+            $Order->insurances()->delete();
+            $Order->invoices()->delete();
+            $Order->payments()->delete();
+        });
     }
 }

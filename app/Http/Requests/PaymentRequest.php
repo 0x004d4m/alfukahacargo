@@ -25,7 +25,13 @@ class PaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'order_id' => 'required',
+            'payer_id' => 'required',
+            'receiver_id' => 'required',
+            'invoice_id' => 'required',
+            'number' => 'required',
+            'paid_at' => 'required',
+            'amount' => 'required|numeric',
         ];
     }
 

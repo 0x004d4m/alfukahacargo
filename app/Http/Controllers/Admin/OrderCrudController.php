@@ -224,11 +224,11 @@ class OrderCrudController extends CrudController
     {
         $this->crud->setValidation(OrderRequest::class);
 
-        $this->crud->field('vin_number');
-        $this->crud->field('year');
-        $this->crud->field('make');
-        $this->crud->field('model');
-        $this->crud->field('type');
+        $this->crud->field('vin_number')->type('vin');
+        $this->crud->field('year')->attributes(['readonly' => 'readonly']);
+        $this->crud->field('make')->attributes(['readonly' => 'readonly']);
+        $this->crud->field('model')->attributes(['readonly' => 'readonly']);
+        $this->crud->field('type')->attributes(['readonly' => 'readonly']);
 
         $this->crud->addField([
             'label' => "Company",

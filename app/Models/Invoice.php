@@ -13,7 +13,8 @@ class Invoice extends Model
     protected $table = 'invoices';
     protected $guarded = ['id'];
     protected $fillable = [
-        'number',
+        'order_id',
+        'number', // random unique id
         'issued_by_id',
         'branch_id',
         'customer_id',
@@ -24,6 +25,19 @@ class Invoice extends Model
         'amount_paid',
         'amount_due',
     ];
+    protected $appends = [
+        'view_amount',
+    ];
+
+    public function getViewAmountAttribute()
+    {
+        return $this->number." - (Amount: $this->amount_due, Paid: $this->amount_paid, Due: $this->amount_due)";
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
     public function branch()
     {
@@ -38,5 +52,13 @@ class Invoice extends Model
     public function customer()
     {
         return $this->belongsTo(Company::class,'customer_id');
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($Invoice) {
+            $Invoice->amount_paid=0;
+            $Invoice->amount_due=$Invoice->amount;
+        });
     }
 }

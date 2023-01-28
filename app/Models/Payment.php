@@ -14,15 +14,21 @@ class Payment extends Model
     protected $table = 'payments';
     protected $guarded = ['id'];
     protected $fillable = [
+        'order_id',
         'payer_id',
         'receiver_id',
         'payment_method_id',
         'invoice_id',
-        'number',
+        'number', // random unique id
         'memo',
         'paid_at',
         'amount',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 
     public function payer()
     {
@@ -42,5 +48,17 @@ class Payment extends Model
     public function invoice()
     {
         return $this->belongsTo(Invoice::class);
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($Payment) {
+            $Invoice = Invoice::where('id',$Payment->invoice->id)->first();
+            $paied=((double)$Invoice->amount_paid + (double)$Payment->amount);
+            $Invoice->update([
+                'amount_due'=>((double)$Invoice->amount - (double)$paied),
+                'amount_paid'=>$paied,
+            ]);
+        });
     }
 }

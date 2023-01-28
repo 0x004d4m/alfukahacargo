@@ -10,8 +10,6 @@ class PaymentCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     public function setup()
@@ -32,6 +30,14 @@ class PaymentCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        $this->crud->addColumn([
+            'label' => "Order",
+            'type' => "select",
+            'name' => 'order_id',
+            'entity' => 'order',
+            'attribute' => "vin_number",
+            'model' => 'App\Models\Order'
+        ]);
         $this->crud->addColumn([
             'label' => "Payer",
             'type' => "select",
@@ -72,10 +78,7 @@ class PaymentCrudController extends CrudController
         if(backpack_user()->hasRole('Customer')){
             $User = User::where('id',backpack_user()->id)->first();
             if($User->company_id != null){
-                $this->crud->addClause('where', 'payer_id', '=', $User->company_id);
-            }
-            if($User->company_id != null){
-                $this->crud->addClause('orWhere', 'receiver_id', '=', $User->company_id);
+                $this->crud->addClause('where', 'receiver_id', '=', $User->company_id);
             }
         }
     }
@@ -84,6 +87,14 @@ class PaymentCrudController extends CrudController
     {
         $this->crud->setValidation(PaymentRequest::class);
 
+        $this->crud->addField([
+            'label' => "Order",
+            'type' => "relationship",
+            'name' => 'order_id',
+            'entity' => 'order',
+            'attribute' => "vin_number",
+            'model' => 'App\Models\Order'
+        ]);
         $this->crud->addField([
             'label' => "Payer",
             'type' => "relationship",
@@ -113,18 +124,13 @@ class PaymentCrudController extends CrudController
             'type' => "relationship",
             'name' => 'invoice_id',
             'entity' => 'invoice',
-            'attribute' => "number",
+            'attribute' => "view_amount",
             'model' => 'App\Models\Invoice'
         ]);
         $this->crud->field('number');
         $this->crud->field('memo');
         $this->crud->field('paid_at');
         $this->crud->field('amount');
-    }
-
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 
     protected function setupShowOperation()

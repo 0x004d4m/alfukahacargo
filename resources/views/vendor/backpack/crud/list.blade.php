@@ -15,7 +15,7 @@
   <div class="container-fluid">
     <h2>
       <span class="text-capitalize">{!! $crud->getHeading() ?? $crud->entity_name_plural !!}</span>
-      <small id="datatable_info_stack">{!! $crud->getSubheading() ?? '' !!}</small>
+      {{-- <small id="datatable_info_stack">{!! $crud->getSubheading() ?? '' !!}</small> --}}
     </h2>
   </div>
 @endsection
@@ -163,4 +163,8 @@
 
   <!-- CRUD LIST CONTENT - crud_list_scripts stack -->
   @stack('crud_list_scripts')
+<script>
+    $(document).ready(function () {
+        $(".dataTables_info").hide()});
+</script>
 @endsection

@@ -15,9 +15,9 @@
         </form>
         <div class="navbar-nav ms-auto p-4 p-lg-0" dir="{{__('content.lang3')}}">
             <a href="/#" class="nav-item nav-link active">{{__('content.home')}}</a>
-            <a href="#about" class="nav-item nav-link">{{__('content.about')}}</a>
-            <a href="#service" class="nav-item nav-link">{{__('content.services')}}</a>
-            <a href="#contact" class="nav-item nav-link">{{__('content.contact')}}</a>
+            <a href="/#about" class="nav-item nav-link">{{__('content.about')}}</a>
+            <a href="/#service" class="nav-item nav-link">{{__('content.services')}}</a>
+            <a href="/#contact" class="nav-item nav-link">{{__('content.contact')}}</a>
             <a href="/admin" class="nav-item nav-link">{{__('content.login')}}</a>
             <a href="/set-language/{{__('content.lang2')}}" class="nav-item nav-link">{{__('content.lang')}}</a>
         </div>

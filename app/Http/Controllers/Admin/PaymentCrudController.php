@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PaymentRequest;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 class PaymentCrudController extends CrudController
@@ -67,6 +68,16 @@ class PaymentCrudController extends CrudController
         $this->crud->column('memo');
         $this->crud->column('paid_at');
         $this->crud->column('amount');
+
+        if(backpack_user()->hasRole('Customer')){
+            $User = User::where('id',backpack_user()->id)->first();
+            if($User->company_id != null){
+                $this->crud->addClause('where', 'payer_id', '=', $User->company_id);
+            }
+            if($User->company_id != null){
+                $this->crud->addClause('orWhere', 'receiver_id', '=', $User->company_id);
+            }
+        }
     }
 
     protected function setupCreateOperation()

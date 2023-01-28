@@ -85,7 +85,7 @@ return [
     // ------
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<b>Alfukaha</b>Cargo',
+    'project_logo'   => '<img style="width: 50%;height: 100%;" src="https://alfukahacargo.com/template/img/new/logo.png">',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,

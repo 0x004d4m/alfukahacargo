@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\InvoiceRequest;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 class InvoiceCrudController extends CrudController
@@ -63,8 +64,15 @@ class InvoiceCrudController extends CrudController
         $this->crud->column('amount_paid');
         $this->crud->column('amount_due');
 
-
-
+        if(backpack_user()->hasRole('Customer')){
+            $User = User::where('id',backpack_user()->id)->first();
+            if($User->company_id != null){
+                $this->crud->addClause('where', 'issued_by_id', '=', $User->company_id);
+            }
+            if($User->company_id != null){
+                $this->crud->addClause('orWhere', 'customer_id', '=', $User->company_id);
+            }
+        }
     }
 
     protected function setupCreateOperation()

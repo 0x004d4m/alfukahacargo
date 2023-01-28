@@ -44,5 +44,6 @@ Route::group([
     Route::crud('payment-method', 'PaymentMethodCrudController');
     Route::crud('payment', 'PaymentCrudController');
     Route::crud('invoice', 'InvoiceCrudController');
+    Route::get('invoice/{id}/print', 'InvoiceCrudController@print');
     Route::crud('location', 'LocationCrudController');
 }); // this should be the absolute last line of this file

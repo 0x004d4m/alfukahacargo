@@ -54,11 +54,19 @@ class Invoice extends Model
         return $this->belongsTo(Company::class,'customer_id');
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     protected static function booted()
     {
         static::creating(function ($Invoice) {
             $Invoice->amount_paid=0;
             $Invoice->amount_due=$Invoice->amount;
+        });
+        static::deleting(function ($Invoice) {
+            $Invoice->payments()->delete();
         });
     }
 }

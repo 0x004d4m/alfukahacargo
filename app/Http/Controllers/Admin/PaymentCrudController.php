@@ -82,20 +82,24 @@ class PaymentCrudController extends CrudController
                 $this->crud->addClause('where', 'receiver_id', '=', $User->company_id);
             }
         }
+
+        $this->crud->addButtonFromView('line', 'print', 'printPayment');
     }
 
-    private function getNewNumber(){
+    private function getNewNumber()
+    {
         $rand = rand(1000000000,9999999999);
         while(Payment::where('number',$rand)->count() != 0){
             $rand=rand(1000000000,9999999999);
         }
+        return $rand;
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(PaymentRequest::class);
-        
-        $this->crud->field('number')->default($this->getNewNumber());
+
+        $this->crud->addField(['name'=>'number','type'=>'text','default'=>$this->getNewNumber()]);
         $this->crud->addField([
             'label' => "Order",
             'type' => "relationship",

@@ -7,11 +7,14 @@ use App\Models\Invoice;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\Widget;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class InvoiceCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     public function setup()
@@ -69,6 +72,11 @@ class InvoiceCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Company'
         ]);
+        $this->crud->column('payment_term');
+        $this->crud->column('due_date');
+        $this->crud->column('amount');
+        $this->crud->column('amount_paid');
+        $this->crud->column('amount_due');
         $this->crud->addColumn([
             'label' => "Branch",
             'type' => "select",
@@ -85,29 +93,16 @@ class InvoiceCrudController extends CrudController
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Company'
         ]);
-        $this->crud->column('payment_term');
-        $this->crud->column('due_date');
         $this->crud->column('note');
-        $this->crud->column('amount');
-        $this->crud->column('amount_paid');
-        $this->crud->column('amount_due');
 
-        if(backpack_user()->hasRole('Customer')){
-            $User = User::where('id',backpack_user()->id)->first();
-            if($User->company_id != null){
-                $this->crud->addClause('where', 'issued_by_id', '=', $User->company_id);
-            }
-            if($User->company_id != null){
-                $this->crud->addClause('orWhere', 'customer_id', '=', $User->company_id);
-            }
-        }
+        $this->crud->addButtonFromView('line', 'print', 'printInvoice');
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(InvoiceRequest::class);
 
-        $this->crud->field('number')->default($this->getNewNumber());
+        $this->crud->addField(['name'=>'number','type'=>'text','default'=>$this->getNewNumber()]);
         $this->crud->addField([
             'label' => "Order",
             'type' => "relationship",
@@ -146,12 +141,15 @@ class InvoiceCrudController extends CrudController
         $this->crud->field('amount');
     }
 
-    private function getNewNumber(){
+    private function getNewNumber()
+    {
         $rand = rand(1000000000,9999999999);
         while(Invoice::where('number',$rand)->count() != 0){
             $rand=rand(1000000000,9999999999);
         }
+        return $rand;
     }
+
     protected function setupShowOperation()
     {
         $this->crud->column('number');
@@ -203,5 +201,15 @@ class InvoiceCrudController extends CrudController
                 $this->crud->addClause('orWhere', 'customer_id', '=', $User->company_id);
             }
         }
+    }
+
+    public function print($id)
+    {
+        $Invoice = Invoice::where('id',$id)->first();
+        $pdf = Pdf::loadView('invoice_pdf', [
+            "Invoice"=>$Invoice,
+            "Carbon"=>Carbon::now(),
+        ]);
+        return $pdf->download('pdf_file.pdf');
     }
 }

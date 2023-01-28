@@ -13,7 +13,7 @@
 
 @section('header')
 	<section class="container-fluid d-print-none">
-    	<a href="javascript: window.print();" class="btn float-right"><i class="la la-print"></i></a>
+    	{{-- <a href="javascript: window.print();" class="btn float-right"><i class="la la-print"></i></a> --}}
 		<h2>
 	        <span class="text-capitalize">{!! $crud->getHeading() ?? $crud->entity_name_plural !!}</span>
 	        <small>{!! $crud->getSubheading() ?? mb_ucfirst(trans('backpack::crud.preview')).' '.$crud->entity_name !!}.</small>

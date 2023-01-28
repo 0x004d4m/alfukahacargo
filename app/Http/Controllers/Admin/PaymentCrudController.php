@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PaymentRequest;
+use App\Models\Payment;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
@@ -83,10 +84,18 @@ class PaymentCrudController extends CrudController
         }
     }
 
+    private function getNewNumber(){
+        $rand = rand(1000000000,9999999999);
+        while(Payment::where('number',$rand)->count() != 0){
+            $rand=rand(1000000000,9999999999);
+        }
+    }
+
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(PaymentRequest::class);
-
+        
+        $this->crud->field('number')->default($this->getNewNumber());
         $this->crud->addField([
             'label' => "Order",
             'type' => "relationship",
@@ -127,7 +136,6 @@ class PaymentCrudController extends CrudController
             'attribute' => "view_amount",
             'model' => 'App\Models\Invoice'
         ]);
-        $this->crud->field('number');
         $this->crud->field('memo');
         $this->crud->field('paid_at');
         $this->crud->field('amount');

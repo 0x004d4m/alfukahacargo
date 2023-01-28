@@ -27,7 +27,7 @@ class InvoiceRequest extends FormRequest
         return [
             'amount' => 'required|numeric',
             'order_id' => 'required',
-            'number' => 'required',
+            'number' => 'required|unique:invoices,number',
             'issued_by_id' => 'required',
             'customer_id' => 'required',
             'due_date' => 'required',

@@ -107,7 +107,7 @@ class InvoiceCrudController extends CrudController
     {
         $this->crud->setValidation(InvoiceRequest::class);
 
-        $this->crud->field('number');
+        $this->crud->field('number')->default($this->getNewNumber());
         $this->crud->addField([
             'label' => "Order",
             'type' => "relationship",
@@ -146,6 +146,12 @@ class InvoiceCrudController extends CrudController
         $this->crud->field('amount');
     }
 
+    private function getNewNumber(){
+        $rand = rand(1000000000,9999999999);
+        while(Invoice::where('number',$rand)->count() != 0){
+            $rand=rand(1000000000,9999999999);
+        }
+    }
     protected function setupShowOperation()
     {
         $this->crud->column('number');

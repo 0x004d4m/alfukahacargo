@@ -29,7 +29,7 @@ class PaymentRequest extends FormRequest
             'payer_id' => 'required',
             'receiver_id' => 'required',
             'invoice_id' => 'required',
-            'number' => 'required',
+            'number' => 'required|unique:payments,number',
             'paid_at' => 'required',
             'amount' => 'required|numeric',
         ];

@@ -49,3 +49,10 @@ Route::group([
     Route::crud('fee', 'FeeCrudController');
     Route::crud('db', 'DbCrudController');
 }); // this should be the absolute last line of this file
+
+Route::group([
+    'prefix'     => config('backpack.base.route_prefix', 'admin'),
+    'namespace'  => 'App\Http\Controllers\Admin',
+], function () { // custom admin routes
+    Route::get('db/change', 'DbController@change');
+}); // this should be the absolute last line of this file

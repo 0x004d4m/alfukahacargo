@@ -36,24 +36,24 @@
                             <p>{{__('order.finalState')}}: {{$Order->finalState?->name}}</p>
                             <p>{{__('order.finalCity')}}: {{$Order->finalCity?->name}}</p>
                         </div>
-                    @endif
-                    @if (!is_null($Order->images))
-                        <div class="col-lg-6">
-                            <h3>{{__('order.Images')}}</h3>
-                            <div class="row">
-                                @php
-                                    $count=0;
-                                @endphp
-                                @foreach (json_decode($Order->images) as $image)
-                                    <div class="col-2 mb-2">
-                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="view({{$count}})"><img src="{{url(str_replace('public','storage',$image))}}" style="max-height: 50px; width: auto; border-radius: 3px;"></a>
-                                    </div>
+                        @if (!is_null($Order->images))
+                            <div class="col-lg-6">
+                                <h3>{{__('order.Images')}}</h3>
+                                <div class="row">
                                     @php
-                                        $count++;
+                                        $count=0;
                                     @endphp
-                                @endforeach
+                                    @foreach (json_decode($Order->images) as $image)
+                                        <div class="col-2 mb-2">
+                                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="view({{$count}})"><img src="{{url(str_replace('public','storage',$image))}}" style="max-height: 50px; width: auto; border-radius: 3px;"></a>
+                                        </div>
+                                        @php
+                                            $count++;
+                                        @endphp
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     @endif
                 @else
                     <div class="col-lg-12 text-center">

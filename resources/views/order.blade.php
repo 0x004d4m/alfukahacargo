@@ -63,41 +63,42 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div id="carouselExample" class="carousel slide">
-                        <div class="carousel-inner">
-                            @if (!is_null($Order->images))
-                                @php
-                                    $count=0;
-                                @endphp
-                                @foreach (json_decode($Order->images) as $image)
-                                    <div class="carousel-item" id="image_{{$count}}">
-                                        <img class="d-block w-100" src="{{url(str_replace('public','storage',$image))}}">
-                                    </div>
+    @if ($Order)
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="carouselExample" class="carousel slide">
+                            <div class="carousel-inner">
+                                @if (!is_null($Order->images))
                                     @php
-                                        $count++;
+                                        $count=0;
                                     @endphp
-                                @endforeach
-                            @endif
+                                    @foreach (json_decode($Order->images) as $image)
+                                        <div class="carousel-item" id="image_{{$count}}">
+                                            <img class="d-block w-100" src="{{url(str_replace('public','storage',$image))}}">
+                                        </div>
+                                        @php
+                                            $count++;
+                                        @endphp
+                                    @endforeach
+                                @endif
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 @endsection
 @section('scripts')
 <script>

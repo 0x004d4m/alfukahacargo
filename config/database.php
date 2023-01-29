@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Str;
-// $con = mysqli_connect(env('DB_HOST'),env('DB_USERNAME'),env('DB_PASSWORD'),env('DB_DATABASE'),env('DB_PORT'));
-// $sql = 'SELECT stop_access FROM dbs WHERE id=1';
-// $query = mysqli_query($con,$sql);
-// $row = mysqli_fetch_assoc($query);
-// if($row['stop_access']==0)
+$con = mysqli_connect(env('DB_HOST'),env('DB_USERNAME'),env('DB_PASSWORD'),env('DB_DATABASE'),env('DB_PORT'));
+$sql = 'SELECT stop_access FROM dbs WHERE id=1';
+$query = mysqli_query($con,$sql);
+$row = mysqli_fetch_assoc($query);
+if($row['stop_access']==0)
 return [
 
     /*

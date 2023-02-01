@@ -59,8 +59,6 @@ class PaymentCrudController extends CrudController
                 $this->crud->addClause('whereHas', 'invoice', function($q)use($User){$q->where('customer_id',$User->company_id);} );
             }
         }
-
-        $this->crud->addButtonFromView('line', 'print', 'printPayment');
     }
 
     private function getNewNumber()

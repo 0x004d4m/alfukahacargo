@@ -24,10 +24,15 @@ class OrderCrudController extends CrudController
             abort(403, 'Access denied');
         }
 
-        if (!backpack_user()->can('Manage Orders'))
-        {
-            $this->crud->denyAccess(['create','delete','update']);
+        if(backpack_user()->hasRole('Customer')){
+            $this->crud->denyAccess(['create','delete']);
+        }else{
+            if (!backpack_user()->can('Manage Orders'))
+            {
+                $this->crud->denyAccess(['create','delete','update']);
+            }
         }
+
         $this->crud->setModel(\App\Models\Order::class);
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/order');
         $this->crud->setEntityNameStrings('order', 'orders');
@@ -410,7 +415,11 @@ class OrderCrudController extends CrudController
 
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        if(backpack_user()->hasRole('Customer')){
+            $this->crud->field('note_to_department');
+        }else{
+            $this->setupCreateOperation();
+        }
     }
 
     protected function setupShowOperation()

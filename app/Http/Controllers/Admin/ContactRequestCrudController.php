@@ -34,7 +34,7 @@ class ContactRequestCrudController extends CrudController
         $this->crud->column('name');
         $this->crud->column('email');
         $this->crud->column('subject');
-        $this->crud->column('message');
+        $this->crud->column('message')->type('textarea');
 
 
     }

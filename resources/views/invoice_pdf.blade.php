@@ -92,7 +92,7 @@
                         <td>-</td>
                         <td>-</td>
                         <td>Fee</td>
-                        <td>{{$Payment->memo}}</td>
+                        <td>{{$Fee->memo}}</td>
                     </tr>
                 @endforeach
                 @foreach ($Invoice->payments as $Payment)

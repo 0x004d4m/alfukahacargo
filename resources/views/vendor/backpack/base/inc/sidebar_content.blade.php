@@ -119,6 +119,7 @@
 @endif
 
 @if(backpack_user()->can('Manage Authentication'))
+    @include('backpack-database-notifications::sidebarMenuItem')
     <!-- Users, Roles, Permissions -->
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Authentication</a>

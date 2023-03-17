@@ -6,6 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Pestopancake\LaravelBackpackNotifications\Notifications\DatabaseNotification;
 
 class Order extends Model
 {
@@ -187,6 +188,19 @@ class Order extends Model
 
     protected static function boot() {
         parent::boot();
+
+        static::updating(function($Order) {
+            if(backpack_user()->hasRole('Customer')){
+                $user = backpack_user();
+                $user->notify(new DatabaseNotification(
+                    $type = 'info', // info / success / warning / error
+                    $message = 'New Note Added',
+                    $messageLong = $Order->note_to_department,
+                    $href = backpack_url("/order/$Order->id/show"),
+                    $hrefText = 'View' // optional
+                ));
+            }
+        });
 
         static::deleting(function($Order) {
             $Order->inspection()->delete();

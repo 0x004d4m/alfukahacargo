@@ -180,11 +180,6 @@ class Order extends Model
         return $this->hasMany(Invoice::class);
     }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
     public function setImagesAttribute($value)
     {
         $this->attributes['images'] = json_encode($value);
@@ -195,15 +190,30 @@ class Order extends Model
 
         static::deleting(function($Order) {
             $Order->inspection()->delete();
-            $Order->services()->delete();
-            $Order->documents()->delete();
-            $Order->notes()->delete();
-            $Order->parts()->delete();
-            $Order->addonServices()->delete();
-            $Order->addonServices()->delete();
-            $Order->insurances()->delete();
-            $Order->invoices()->delete();
-            $Order->payments()->delete();
+            if(count($Order->services)>0){
+                $Order->services()->delete();
+            }
+            if(count($Order->documents)>0){
+                $Order->documents()->delete();
+            }
+            if(count($Order->notes)>0){
+                $Order->notes()->delete();
+            }
+            if(count($Order->parts)>0){
+                $Order->parts()->delete();
+            }
+            if(count($Order->addonServices)>0){
+                $Order->addonServices()->delete();
+            }
+            if(count($Order->addonServices)>0){
+                $Order->addonServices()->delete();
+            }
+            if(count($Order->insurances)>0){
+                $Order->insurances()->delete();
+            }
+            if(count($Order->invoices)>0){
+                $Order->invoices()->delete();
+            }
         });
     }
 }

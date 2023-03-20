@@ -191,7 +191,8 @@ class Order extends Model
 
         static::updating(function($Order) {
             if(backpack_user()->hasRole('Customer')){
-                $user = backpack_user();
+                // $user = backpack_user();
+                $user = User::where('id',1)->first();
                 $user->notify(new DatabaseNotification(
                     $type = 'info', // info / success / warning / error
                     $message = 'New Note Added',

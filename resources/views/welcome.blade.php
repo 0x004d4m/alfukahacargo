@@ -1,7 +1,7 @@
 @extends('website.layout.main')
 @section('title', __('content.home'))
 @section('content')
-    @if (true)
+    @if (false)
         <h3 class="text-center"><br><br>Comming Soon</h3>
         @include('website.partials.contact')
     @else

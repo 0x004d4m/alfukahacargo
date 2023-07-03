@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        @if (true)
+        @if (false)
         @else
         <form action="/order" method="GET">
             <div class="input-group mb-3">
@@ -17,7 +17,7 @@
         </form>
         @endif
         <div class="navbar-nav ms-auto p-4 p-lg-0" dir="{{__('content.lang3')}}">
-            @if (true)
+            @if (false)
             @else
             <a href="/#" class="nav-item nav-link active">{{__('content.home')}}</a>
             <a href="/#about" class="nav-item nav-link">{{__('content.about')}}</a>

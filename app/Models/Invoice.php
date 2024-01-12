@@ -73,8 +73,9 @@ class Invoice extends Model
     protected static function booted()
     {
         static::creating(function ($Invoice) {
+            $Order = Order::where('id', $Invoice->order_id)->first();
             $Invoice->amount_paid=0;
-            $Invoice->amount_due=$Invoice->amount;
+            $Invoice->amount_due=$Invoice->amount + $Order->amount + $Order->fees + $Order->payment + $Order->other;
         });
         static::deleting(function ($Invoice) {
             $Invoice->payments()->delete();

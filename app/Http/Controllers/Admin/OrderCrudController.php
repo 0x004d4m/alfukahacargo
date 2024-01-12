@@ -308,24 +308,6 @@ class OrderCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'label' => "Start State",
-            'type' => "relationship",
-            'name' => 'start_state_id',
-            'entity' => 'startState',
-            'attribute' => "name_".app()->getLocale(),
-            'model' => 'App\Models\State'
-        ]);
-
-        $this->crud->addField([
-            'label' => "Start City",
-            'type' => "relationship",
-            'name' => 'start_city_id',
-            'entity' => 'startCity',
-            'attribute' => "name_".app()->getLocale(),
-            'model' => 'App\Models\City'
-        ]);
-
-        $this->crud->addField([
             'label' => "Final Port",
             'type' => "relationship",
             'name' => 'final_port_id',
@@ -341,24 +323,6 @@ class OrderCrudController extends CrudController
             'entity' => 'finalCountry',
             'attribute' => "name_".app()->getLocale(),
             'model' => 'App\Models\Country'
-        ]);
-
-        $this->crud->addField([
-            'label' => "Final State",
-            'type' => "relationship",
-            'name' => 'final_state_id',
-            'entity' => 'finalState',
-            'attribute' => "name_".app()->getLocale(),
-            'model' => 'App\Models\State'
-        ]);
-
-        $this->crud->addField([
-            'label' => "Final City",
-            'type' => "relationship",
-            'name' => 'final_city_id',
-            'entity' => 'finalCity',
-            'attribute' => "name_".app()->getLocale(),
-            'model' => 'App\Models\City'
         ]);
 
         $this->crud->addField([
@@ -399,6 +363,11 @@ class OrderCrudController extends CrudController
         $this->crud->field('shipping_line');
         $this->crud->field('container_number');
         $this->crud->field('booking_number');
+
+        $this->crud->field('amount');
+        $this->crud->field('fees');
+        $this->crud->field('payment');
+        $this->crud->field('other');
 
         $this->crud->addField([
             'label' => "المرفقات",
@@ -594,6 +563,11 @@ class OrderCrudController extends CrudController
         $this->crud->column('shipping_line');
         $this->crud->column('container_number');
         $this->crud->column('booking_number');
+
+        $this->crud->column('amount');
+        $this->crud->column('fees');
+        $this->crud->column('payment');
+        $this->crud->column('other');
 
         $this->crud->addColumn([
             'label' => "Images",

@@ -49,6 +49,10 @@ class Order extends Model
         'container_number',
         'booking_number',
         'images',
+        'amount',
+        'fees',
+        'payment',
+        'other',
     ];
 
     public function location()

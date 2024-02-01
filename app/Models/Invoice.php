@@ -75,7 +75,7 @@ class Invoice extends Model
         static::creating(function ($Invoice) {
             $Order = Order::where('id', $Invoice->order_id)->first();
             $Invoice->amount_paid=0;
-            $Invoice->amount_due=$Invoice->amount + $Order->amount + $Order->fees + $Order->payment + $Order->other;
+            $Invoice->amount_due=$Invoice->amount + $Order->amount??0 + $Order->fees??0 + $Order->payment??0 + $Order->other??0;
         });
         static::deleting(function ($Invoice) {
             $Invoice->payments()->delete();
